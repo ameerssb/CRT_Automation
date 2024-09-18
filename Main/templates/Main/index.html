@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% load static %}
+        
+
+  {% block content%}
+  {% load embed_video_tags %}
+  <main class="row py-5">
+    <div class="col-5 pe-5">
+      <div class="py-4">
+        <img src="{{homeinfo.image.url}}" alt="" width="100%" height="300px">
+      </div>      
+    </div>
+    <div class="col-7 ps-5">
+      <div class="pb-3">
+        <p class="fs-1">My Portal</p>
+      </div>
+      <div class="py-4 textt-center">
+        <div class="d-flex justify-content-between">
+          <i class="fa"></i>
+          <a href="{{social.researchgate}}" target="_blank" class="btn text-white researchgate" style="background-color: #07855f;"><i class="fa-brands fa-researchgate"></i></a>          
+          <a href="{{social.github}}" target="_blank" class="btn btn-dark github"><i class="bx bxl-github"></i></a>
+          <a href="{{social.linkedin}}" target="_blank" class="btn btn-primary linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="{{social.twitter}}" target="_blank" class="btn btn-primary twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="{{social.facebook}}" target="_blank" class="btn btn-primary facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="{{social.instagram}}" target="_blank" class="btn btn-danger instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="{{social.telegram}}" target="_blank" class="btn btn-primary telegram"><i class="bx bxl-telegram"></i></a>
+          <!-- <a href="{{social.tiktok}}" target="_blank" class="btn btn-dark tiktok"><i class="bx bxl-tiktok"></i></a>   -->
+        </div>
+      </div>
+      <div class="py-4">
+        <div class="d-flex justify-content-center">
+          {% if homeinfo.resume %}
+          <div class="px-2">
+            <a href="{{homeinfo.resume.url}}" target="_blank" class="btn btn-secondary rounded-circle fs-6" style="height: 85px; width: 87px; padding-top: 30%;">Resume</a>            
+          </div>
+          {% endif %}
+          {% if homeinfo.cv %}
+          <div class="px-2">
+            <a href="{{homeinfo.cv.url}}" target="_blank" class="btn btn-secondary rounded-circle fs-6" style="height: 85px; width: 87px; padding-top: 25%;">Detailed CV</a>            
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-5">
+    </div>
+
+    <div class="pt-4">
+      <div class="pb-3">
+        <p style="text-align: justify;">{{homeinfo.body|linebreaksbr}}</p>
+      </div>
+    </div>    
+  </main>
+  {% endblock content%}

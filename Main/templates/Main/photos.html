@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+  {% block content%}
+    <div class="row g-5 py-5">
+        <div class="col-sm-5">
+          <div class="news border-bottom custom-border pb-4">
+            <a href=""><img src="{{photos.0.image.url}}" alt="" width="100%" height="300px"></a>
+            <a href=""><img src="{{photos.1.image.url}}" alt="" width="100%" height="300px"></a>
+          </div>
+        </div>
+
+        <div class="col-sm-7">
+          <div class="row g-5">
+            <div class="col-sm-6 border-start custom-border">
+              <div class="news border-bottom pb-2">
+                <a href=""><img src="{{photos.2.image.url}}" alt="" width="100%" height="200px"></a>
+                <a href=""><img src="{{photos.3.image.url}}" alt="" width="100%" height="200px"></a>
+                <a href=""><img src="{{photos.4.image.url}}" alt="" width="100%" height="200px"></a>
+              </div>
+            </div>
+            <div class="col-sm-6 border-start custom-border">
+              <div class="news border-bottom pb-2">
+                <a href=""><img src="{{photos.5.image.url}}" alt="" width="100%" height="200px"></a>
+                <a href=""><img src="{{photos.6.image.url}}" alt="" width="100%" height="200px"></a>
+                <a href=""><img src="{{photos.7.image.url}}" alt="" width="100%" height="200px"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div> <!-- End .row -->
+
+  </main>
+
+  {% endblock content%}

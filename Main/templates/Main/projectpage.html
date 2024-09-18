@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load embed_video_tags %}        
+
+{% block content%}
+
+    <main id="main">
+
+    <!-- ======= Search Results ======= -->
+    <section>
+      <div class="container-fluid">
+        <div class="d-flex justify-content-between">
+          <h3>{{project.headline}}</h3>
+        </div>          
+        <div class="d-flex justify-content-between">
+          {% if project.requirement %}
+          <div>
+            <span class="text-primary">Requirements: </span>            
+            <span style="text-align: justify;">{{project.requirement | linebreaksbr }}</span>
+          </div>
+          {% endif %}          
+          <div>
+            <span class="text-primary">Duration: </span>
+            <span>{{project.start_date|date}} - {{project.end_date|date}}</span>
+          </div>    
+        </div>
+        <div class="pb-4 d-flex justify-content-between">
+          <div>
+            <span class="text-primary">Source Code: </span><a href="{{project.source_code}}" target="_blank">{{project.source_code}}</a>                
+          </div>
+          <div>
+            <span class="text-primary">Link: </span><a href="{{project.url}}" target="_blank">{{project.url}}</a>      
+          </div>
+        </div>
+        {% if project.body %}
+          <p style="text-align: justify;">{{project.body | linebreaksbr }}</p>
+        {% endif %}
+        {% if project.video %}
+          <video controls preload loop poster="{{project.image.url}}" height="100%" width="100%">
+            <source src="{{project.video.url}}" type="video/mp4">
+          </video>
+        {% else %}
+          <img src="{{project.image.url}}" alt="" height="100%" width="100%" class="border border-success">            
+        {% endif %}
+      </div>
+    </section> <!-- End Search Result -->
+
+    </main><!-- End #main -->
+    
+{% endblock content%}

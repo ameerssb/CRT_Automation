@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+{% load static %}
+        
+
+  {% block content%}
+
+  <main class="py-5">
+    <div class="container-fluid border rounded-3 px-3 pt-3">
+      <p style="text-align: justify;">{{ research.body|linebreaksbr }}</p>
+    </div>
+    <div class="ps-3">
+      <p class="fs-2 border-bottom border-secondary">Research Interests</p>
+      <div class="ps-3">
+        {% if researchinterest.count > 0 %}          
+        <ul class="fs-5">
+          {% for r in researchinterest %}
+          <li class="pb-1" style="text-align: justify;">{{ r.name }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="ps-3 text-danger">No Research Interest Available</p>
+        {% endif %}  
+      </div>    
+    </div>
+    <div class="container-fluid ps-3">
+      <p class="fs-2 border-bottom border-secondary">Publications</p>
+      <p class="fs-4 border-secondary">Journals</p>
+      <div class="ps-3">
+        {% if p1.count > 0 %}
+        <ul class="fs-6">
+          {% for p in p1 %}
+          <li class="pb-1">
+            <span>{{p.thesis_title}}</span>
+            <span><a href="{{p.link}}" target="_blank">{{p.link}}</a></span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="ps-3 text-danger">No Journal Article</p>
+        {% endif %}
+      </div>       
+      <p class="fs-4 border-secondary">Conferences</p>
+      <div class="ps-3">
+        {% if p2.count > 0 %}
+        <ul class="fs-6">
+          {% for p in p2 %}
+          <li class="pb-1">
+            <span>{{p.thesis_title}}</span>
+            <span><a href="{{p.link}}" target="_blank">{{p.link}}</a></span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="ps-3 text-danger">No Conference Article</p>
+        {% endif %}
+      </div>            
+    </div>    
+  </main>
+  {% endblock content%}

@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{% load embed_video_tags %}        
+
+{% block content%}
+
+    <main id="main"> <!-- #main -->
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h3 class="text-primary">{{cat.name}}</h3>
+        </div>          
+        {% for obj in project%}
+        <div class="pb-5">
+          <div class="row">
+            <div class="col-md-5 pe-md-3">
+              <!-- <div class=""> -->
+                {% if obj.video %}
+                <video controls preload loop height="250px" width="100%">
+                  <source src="{{obj.video.url}}" type="video/mp4">
+                </video>
+                {% else %}
+                <img src="{{obj.image.url}}" alt="" height="250px" width="100%">            
+                {% endif %}  
+              <!-- </div> -->
+            </div>
+            <div class="col-md-7">
+              <div class="">
+                <h4><a href="{% url 'ProjectPage' obj.cat.slug obj.id %}">{{obj.headline}}</a></h4>
+                {% if obj.short %}
+                  <p style="text-align: justify;">{{obj.short | linebreaksbr }}</p>
+                {% endif %}  
+              </div>
+              <div class="">
+                {% if obj.url %}            
+                <div class="news-meta"><span class="text-primary">Link: </span><a href="{{obj.url}}" target="_blank">{{obj.url}}</a></div>
+                {% endif %}
+                {% if obj.source_code %}            
+                <div class="news-meta"><span class="text-primary">Source Code: </span><a href="{{obj.source_code}}" target="_blank">{{obj.source_code}}</a></div>
+                {% endif %}
+                {% if obj.requirement %}
+                <div class="news-meta"><span class="text-primary">Requirements: </span>            
+                  <span style="text-align: justify;" class="text-success">{{obj.requirement | linebreaksbr }}</span></div>
+                {% endif %}
+                <div class="news-meta"><span class="text-primary">Duration: </span><span>{{obj.start_date|date}} to {{obj.end_date|date}}</span></div>  
+              </div>  
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Paging -->
+        <!-- <div class="text-start py-4">
+          <div class="custom-pagination">
+            {% if project.has_previous %}
+            <a href="?page=1" class="prev">&laquo; first</a>
+            <a href="?page={{ project.previous_page_number }}" class="prev">Previous</a>
+            <a href="?page={{ project.previous_page_number }}">{{project.previous_page_number}}</a>
+            <bold class="prev">Previous</bold>
+            {% endif %}
+            {% if project.number%}                
+            <a href="?page={{ project.number }}" class="active">{{ project.number }}</a>
+            {% endif%}
+            {% if project.has_next%}
+            <a href="?page={{ project.next_page_number }}">{{ project.next_page_number }}</a>
+            <a href="?page={{ project.next_page_number }}" class="next">Next</a>
+            <a href="?page={{ project.paginator.num_pages }}" class="next">last &raquo;</a>
+            <bold class="prev">Next</bold>
+            {% endif %}
+          </div>
+        </div> -->
+        <!-- End Paging -->
+      </div>
+    </section>
+
+    </main><!-- End #main -->
+    
+{% endblock content%}
